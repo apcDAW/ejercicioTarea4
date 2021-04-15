@@ -9,21 +9,27 @@ package daw_ed04_actividad;
 public class Main {
 
     public static void main(String[] args) {
-        CCuenta miCuenta;
+        
+        CCuenta cuenta1;
         double saldoActual;
+        final String propietarioCuenta = "Juan Gutiérrez";
 
-        miCuenta = new CCuenta("Juan Gutiérrez","1300-2665-85-4433221144",2500,0);
-        saldoActual = miCuenta.estado();
+        cuenta1 = new CCuenta(propietarioCuenta,"1300-2665-85-4433221144",2500,0);
+        saldoActual = cuenta1.estado();
         System.out.println("El saldo actual es"+ saldoActual );
+        System.out.println("El propietario es"+ propietarioCuenta );
+        opera(cuenta1, 2300, 695);
+    }
 
+    private static void opera(CCuenta cuenta1, int cantRetirar, int cantIngresar) {
         try {
-            miCuenta.retirar(2300);
+            cuenta1.retirar(cantRetirar);
         } catch (Exception e) {
             System.out.print("Fallo al retirar");
         }
         try {
             System.out.println("Ingreso en cuenta");
-            miCuenta.ingresar(695);
+            cuenta1.ingresar(cantIngresar);
         } catch (Exception e) {
             System.out.print("Fallo al ingresar");
         }
